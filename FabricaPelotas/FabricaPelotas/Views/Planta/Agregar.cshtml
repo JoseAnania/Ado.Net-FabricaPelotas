@@ -1,0 +1,57 @@
+﻿@model FabricaPelotas.Models.Planta
+
+@{
+    ViewBag.Title = "Agregar";
+}
+
+<h2>Agregar Planta</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NombrePlanta, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NombrePlanta, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NombrePlanta, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(model => model.IdFabrica, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("idFabrica", (SelectList)ViewBag.cboFabrica, "Seleccione la Fábrica", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IdFabrica, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(model => model.IdColor, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("idColor", (SelectList)ViewBag.cboColor, "Seleccione el Color", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IdColor, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(model => model.Superficie, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Superficie, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Superficie, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Agregar" class="btn btn-primary" />
+            <a class="btn btn-primary" href="/Planta/Index" role="button">Volver</a>
+        </div>
+    </div>
+}
